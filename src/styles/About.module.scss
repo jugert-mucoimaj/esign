@@ -1,0 +1,257 @@
+.about {
+  width: 100%;  /* Changed from 100vw */
+  padding: 4rem 2rem;
+  background: #0D0D0D;
+}
+
+/* Hero Section - Banner Style */
+.hero {
+  width: 100%;
+  height: 50vh;
+  background: url("../assets/images/fingerprint.png") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.heroContent {
+  position: relative;
+  max-width: 50%;
+  margin-left: 5rem;
+  z-index: 1;
+}
+
+/* Hero Title */
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3rem); /* Adjusted size */
+  font-weight: bold;
+  color: #E4C580;
+}
+
+/* Hero Text */
+.heroText {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* Adjusted size */
+  color: #ffffff;
+  margin-top: 1rem;
+  max-width: 35rem; /* Reduced width for better readability */
+  word-wrap: break-word;
+}
+
+/* Timeline Section */
+.timeline {
+  margin-top: 5rem;
+  padding-left: 4rem; /* Keeps text left-aligned */
+}
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  align-items: flex-start; /* Keeps alignment */
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 3rem; /* Moves text slightly right */
+}
+
+.timelineDot {
+  width: 15px;
+  height: 15px;
+  background: #E4C580;
+  border-radius: 50%;
+}
+
+.timelineText {
+  text-align: left;
+  color: white;
+  max-width: 60%;
+}
+
+/* Company Structure */
+.companyStructure {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-left: 4rem;
+}
+
+.smallBox, .largeBox {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Team Section */
+.team {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center;
+}
+
+.teamMember {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teamMember:hover {
+  transform: translateY(-5px);
+}
+
+.teamImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.teamName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #E4C580;
+}
+
+.teamRole {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+.teamBio {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 1024px) {
+  .hero {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .heroContent {
+    max-width: 80%;
+    margin-left: 0;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem); /* Slightly smaller title */
+  }
+
+  .heroText {
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem); /* Smaller text */
+    max-width: 90%;
+  }
+
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .timelineContainer {
+    align-items: center; /* Centers timeline on mobile */
+  }
+
+  .timelineItem {
+    flex-direction: column;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .timelineText {
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: justify;
+  }
+
+  .companyStructure {
+    flex-direction: column;
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Scales well on mobile */
+  }
+
+  .heroText {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    max-width: 90%;
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timelineItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .companyStructure {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

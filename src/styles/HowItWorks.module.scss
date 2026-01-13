@@ -1,0 +1,59 @@
+.howItWorks {
+  width: 99vw;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #0D0D0D, #1A1A1A); // Slight gradient for separation
+  text-align: center;
+}
+
+.step {
+  padding: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.2); // Thin white outline instead of solid background
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; // Ensures even spacing inside the card
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  max-width: 300px;
+  min-height: 250px; // Ensures all cards have the same height
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2); // Minimal white glow effect
+  }
+}
+
+.icon {
+  font-size: 3rem;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  filter: drop-shadow(0px 0px 5px rgba(228, 197, 128, 0.5)); // Gold glow
+
+  &:hover {
+    filter: drop-shadow(0px 0px 15px rgba(228, 197, 128, 1)); // Stronger Gold Glow on Hover
+  }
+}
+
+.arrow {
+  font-size: 3rem;
+  color: #E4C580; // Bold Gold Arrows
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .howItWorks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .arrow {
+    transform: rotate(90deg); /* Rotate arrow downwards for mobile */
+  }
+
+  .step {
+    min-height: auto; // Allows better stacking for mobile
+  }
+}

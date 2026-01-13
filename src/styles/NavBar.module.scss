@@ -1,0 +1,165 @@
+// Global Styles
+$gold: #E4C580;
+$dark-bg: #0D0D0D;
+$white: #ffffff;
+
+// NavBar Container
+.navbar {
+  width: 100%;
+  background: $dark-bg;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+// Logo
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $gold;
+}
+
+// Desktop Navigation
+.navLinks {
+  display: flex;
+  gap: 2rem;
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $gold;
+    }
+  }
+}
+
+// Profile Section
+.profile {
+  position: relative;
+  cursor: pointer;
+
+  .profileIcon {
+    font-size: 1.8rem;
+    color: $gold;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.logoLink {
+  text-decoration: none;
+  color: inherit; // Keeps text color same as parent
+  font-weight: bold;
+
+  &:hover {
+    color: #E4C580; // Highlight color on hover
+  }
+}
+
+
+// Dropdown Menu
+.dropdownMenu {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+
+  a {
+    padding: 0.5rem 1rem;
+    color: $white;
+    text-decoration: none;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Login Button (Only for Logged Out Users)
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: $white;
+  text-decoration: none;
+  transition: background 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Mobile Menu Button
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: $gold;
+  cursor: pointer;
+}
+
+// Mobile Navigation (Hidden by Default)
+.mobileNav {
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem 0;
+  backdrop-filter: blur(10px);
+
+  .navItem {
+    padding: 1rem;
+    color: $white;
+    text-decoration: none;
+    transition: background 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .profile {
+    display: none;
+  }
+}

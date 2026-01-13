@@ -1,0 +1,20 @@
+.footer {
+  width: 100%;
+  padding: 2rem;
+  background: #0D0D0D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer a {
+  transition: color 0.3s ease-in-out;
+}
+
+/* Additional responsive fixes if needed */
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem; // Reduced padding on mobile
+  }
+}

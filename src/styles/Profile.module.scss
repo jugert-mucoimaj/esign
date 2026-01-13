@@ -1,0 +1,261 @@
+$gold: #E4C580;
+$gold-hover: #FFD700;
+$dark-bg: #0D0D0D;
+$white: #ffffff;
+$input-bg: rgba(255, 255, 255, 0.07);
+$border-color: rgba(255, 255, 255, 0.2);
+$shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+
+// Page Layout
+.profilePage {
+  height: 100vh;
+  width: 99vw;
+  display: flex;
+  flex-direction: column;
+  background: $dark-bg;
+  color: $white;
+}
+
+// Navbar (Fixed & Sleek)
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 1px solid $border-color;
+}
+
+.navButton {
+  background: none;
+  border: 2px solid $gold;
+  color: $gold;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: $gold;
+    color: $dark-bg;
+  }
+}
+
+// Input Group Styling (Includes Password Fields)
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    background: $input-bg;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $gold;
+    }
+
+    .icon {
+      font-size: 1.3rem;
+      color: $gold;
+      margin-right: 0.8rem;
+    }
+
+    input {
+      flex-grow: 1;
+      background: none;
+      border: none;
+      color: $white;
+      font-size: 1.1rem;
+      outline: none;
+      padding: 0.5rem;
+    }
+
+    // Eye Icon for Password Toggle
+    .eyeIcon {
+      position: absolute;
+      right: 1rem;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $gold;
+      }
+    }
+  }
+}
+
+
+// Profile Layout with Sidebar
+.profileLayout {
+  display: flex;
+  margin-top: 7rem;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  margin-left: 0 !important;
+  margin-right: auto;
+}
+
+// Sidebar (Fixed on Left)
+.sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-right: 1px solid $border-color;
+}
+
+.sidebarButton {
+  background: none;
+  border: none;
+  color: $white;
+  font-size: 1.2rem;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover, &.active {
+    color: $gold;
+    font-weight: bold;
+  }
+}
+
+// Right Content Area
+.profileContent {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $gold;
+  margin-bottom: 2rem;
+}
+
+// Sections Styling
+.section {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+}
+
+// Input Group Styling
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    background: $input-bg;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid $border-color;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $gold;
+    }
+
+    .icon {
+      font-size: 1.3rem;
+      color: $gold;
+      margin-right: 0.8rem;
+    }
+
+    input {
+      flex-grow: 1;
+      background: none;
+      border: none;
+      color: $white;
+      font-size: 1.1rem;
+      outline: none;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// Save Button
+.saveButton {
+  background: $gold;
+  color: $dark-bg;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  text-align: center;
+  box-shadow: $shadow;
+
+  &:hover {
+    background: $gold-hover;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .profileLayout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .profileContent {
+    padding: 2rem 1.5rem;
+  }
+}

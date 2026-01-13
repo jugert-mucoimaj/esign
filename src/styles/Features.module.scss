@@ -1,0 +1,39 @@
+.features {
+  width: 99vw;
+  padding: 4rem 2rem;
+  background: #0D0D0D; // Black Background
+  text-align: center;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  // Centers icon horizontally
+  justify-content: center; // Centers icon vertically
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.featureIcon {
+  font-size: 3rem;
+  color: transparent; // Makes it look outlined
+  stroke: white; // White outline effect
+  stroke-width: 2px;
+  transition: all 0.3s ease-in-out;
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5)); // Soft Glow
+  display: flex;
+  align-items: center;
+  justify-content: center; // Ensures icon is properly centered
+
+  &:hover {
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.9)); // Stronger Glow on Hover
+  }
+}

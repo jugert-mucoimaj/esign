@@ -1,0 +1,188 @@
+// Global Colors
+$gold: #E4C580;
+$dark-bg: #0D0D0D;
+$white: #ffffff;
+$grey: rgba(255, 255, 255, 0.1);
+
+// Full-Screen Settings Layout
+.settingsContainer {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 4rem;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+// Title
+.title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: $gold;
+  margin-bottom: 1rem;
+}
+
+// Sections
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $grey;
+
+  h3 {
+    font-size: 1.5rem;
+    color: $gold;
+    font-weight: bold;
+  }
+}
+
+// 🔐 Key Containers
+.keyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+
+  span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.someHeaders {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; // Adjust spacing between icon and text
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #E4C580; // Gold color for consistency
+  white-space: nowrap; // Prevents accidental line breaks
+}
+
+.icon {
+  font-size: 1.6rem;
+  color: #E4C580; // Matches theme
+}
+
+// Key Box (Aligns Key, Eye & Copy Button)
+.keyBox {
+  display: flex;
+  align-items: center;
+  background: $grey;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  max-width: 600px;
+  justify-content: space-between;
+
+  span {
+    flex: 1;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $gold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// 🔄 Rotate Button
+.rotateButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #E4C580, #FFD700);
+  color: $dark-bg;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(228, 197, 128, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+// ⚙️ Preferences
+.toggleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+
+  span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+// Toggle Switch
+.switch {
+  position: relative;
+  width: 45px;
+  height: 24px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    border-radius: 24px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: $white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .slider {
+    background: $gold;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(21px);
+  }
+}
