@@ -4,9 +4,11 @@ import styles from "../styles/Profile.module.scss";
 import {FaUser, FaEnvelope, FaPhone, FaLock, FaArrowLeft, FaSignOutAlt, FaEyeSlash, FaEye} from "react-icons/fa";
 import api from "../utils/api";
 import Cookies from "js-cookie";
+import { useToast } from "../components/Toast";
 
 const Profile = () => {
     const navigate = useNavigate();
+    const toast = useToast();
     const [activeSection, setActiveSection] = useState("name");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -29,16 +31,19 @@ const Profile = () => {
                 setEmail(userData.email);
             } catch (err) {
                 setError("Failed to fetch profile");
+                toast.error("Failed to fetch profile");
             }
         };
 
         fetchProfile();
     }, []);
 
-
-
-
     const handleSave = async () => {
+        if (password && password !== confirmPassword) {
+            toast.error("Passwords do not match!");
+            return;
+        }
+
         try {
             await api.put("/user/profile", {
                 first_name: firstName,
@@ -46,15 +51,19 @@ const Profile = () => {
                 phone,
                 password: password || undefined,
             });
-            alert("Profile updated successfully!");
+            toast.success("Profile updated successfully!");
+            setPassword("");
+            setConfirmPassword("");
         } catch (err) {
             setError("Failed to update profile");
+            toast.error("Failed to update profile");
         }
     };
 
     const handleLogout = () => {
         Cookies.remove("token");
         localStorage.removeItem("token");
+        toast.info("Logged out successfully");
         navigate("/login");
     };
 
@@ -137,8 +146,8 @@ const Profile = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <span className={styles.eyeIcon} onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
                                 </div>
                             </div>
 
@@ -153,12 +162,11 @@ const Profile = () => {
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                     <span className={styles.eyeIcon} onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
+                                        {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
                                 </div>
                             </div>
                         </section>
-
                     )}
 
                     <button className={styles.saveButton} onClick={handleSave}>Save Changes</button>

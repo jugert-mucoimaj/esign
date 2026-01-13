@@ -38,6 +38,32 @@ $border-color: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.8);
 }
 
+// Error Message
+.error {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 0.8rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  width: 100%;
+  max-width: 380px;
+  animation: fadeIn 0.3s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 // Input Group
 .inputGroup {
   display: flex;
@@ -95,13 +121,18 @@ $border-color: rgba(255, 255, 255, 0.15);
   transition: 0.3s ease-in-out;
   box-shadow: 0px 5px 15px rgba(228, 197, 128, 0.3);
 
-  &:hover {
+  &:hover:not(:disabled) {
     box-shadow: 0px 0px 20px rgba(228, 197, 128, 0.7);
     transform: scale(1.05);
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 
   .buttonIcon {

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import styles from "../styles/Settings.module.scss";
 import { FaEye, FaEyeSlash, FaCopy, FaSyncAlt, FaShieldAlt, FaCogs } from "react-icons/fa";
+import api from "../utils/api";
+import { useToast } from "../components/Toast";
 
 const Settings = () => {
+    const toast = useToast();
     const [showPublicKey, setShowPublicKey] = useState(false);
     const [showPrivateKey, setShowPrivateKey] = useState(false);
     const [autoDownload, setAutoDownload] = useState(true);
@@ -13,25 +15,18 @@ const Settings = () => {
 
     const copyToClipboard = (key) => {
         navigator.clipboard.writeText(key);
-        alert("Copied to clipboard!");
+        toast.success("Copied to clipboard!");
     };
 
     const fetchKeys = async () => {
         setLoadingKeys(true);
         try {
-            const response = await axios.post(
-                "http://localhost:8000/auth/retrieve_keys",
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                }
-            );
+            const response = await api.post("/auth/retrieve_keys", {});
             setPublicKey(response.data.public_key);
             setPrivateKey(response.data.private_key);
         } catch (error) {
             console.error("Error retrieving keys:", error.response ? error.response.data : error);
+            toast.error("Failed to retrieve keys");
         } finally {
             setLoadingKeys(false);
         }

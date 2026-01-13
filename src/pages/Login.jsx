@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { auth, googleProvider, signInWithPopup } from "../utils/firebase";
 import {FaEnvelope, FaLock, FaGoogle, FaUser, FaEyeSlash, FaEye, FaPhone} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
+import { useToast } from "../components/Toast";
 
 const Login = () => {
     const canvasRef = useRef(null);
@@ -18,6 +19,7 @@ const Login = () => {
     const [phone, setPhoneNumber] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const toast = useToast();
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -128,16 +130,13 @@ const Login = () => {
 
             Cookies.set("token", response.data.access_token, { expires: 7 });
             localStorage.setItem("token", response.data.access_token);
+            toast.success("Logged in with Google!");
             navigate("/account/dashboard");
         } catch (error) {
             console.error("Google Login Failed:", error);
+            toast.error("Google login failed. Please try again.");
         }
     };
-
-
-
-
-
 
     useEffect(() => {
         const token = Cookies.get("token") || localStorage.getItem("token");
@@ -162,11 +161,13 @@ const Login = () => {
             });
 
             console.log("Signup Success:", response.data);
-            alert("Account created successfully. Please log in.");
+            toast.success("Account created successfully! Please log in.");
             setIsSignUp(false);
         } catch (err) {
             console.log(err);
-            setError(err.response?.data?.message || "Signup failed.");
+            const errorMsg = err.response?.data?.message || "Signup failed.";
+            setError(errorMsg);
+            toast.error(errorMsg);
         }
     };
 
@@ -188,14 +189,17 @@ const Login = () => {
             if (response.data.access_token) {
                 Cookies.set("token", response.data.access_token, { expires: 7 });
                 localStorage.setItem("token", response.data.access_token);
+                toast.success("Welcome back!");
                 navigate("/account/dashboard");
             } else {
-
                 setError("Invalid login credentials.");
+                toast.error("Invalid login credentials.");
             }
         } catch (err) {
             console.log(err);
-            setError(err.response?.data?.message || "Login failed.");
+            const errorMsg = err.response?.data?.message || "Login failed.";
+            setError(errorMsg);
+            toast.error(errorMsg);
         }
     };
 

@@ -1,3 +1,5 @@
+$gold: #E4C580;
+
 .contractInvitations {
   display: flex;
   flex-direction: column;
@@ -7,10 +9,45 @@
   h3 {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #E4C580;
+    color: $gold;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+}
+
+.refreshButton {
+  background: none;
+  border: none;
+  color: $gold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-left: auto;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -20,16 +57,25 @@
   font-size: 0.9rem;
 }
 
-// 🎯 Fix Invite Card Overflow
+.error {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 0.6rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 77, 77, 0.3);
+}
+
 .inviteCard {
   display: flex;
-  flex-direction: column; // Stack items
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.08);
   padding: 0.8rem;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: 0.3s;
-  width: 100%; // Ensure it fits inside rightPanel
+  width: 100%;
 
   &:hover {
     background: rgba(255, 255, 255, 0.12);
@@ -37,8 +83,9 @@
 
   .userIcon {
     font-size: 1.8rem;
-    color: #E4C580;
+    color: $gold;
     margin-bottom: 0.5rem;
+    align-self: center;
   }
 
   .inviteDetails {
@@ -52,20 +99,23 @@
       font-weight: bold;
     }
 
-    .contractTitle {
+    .senderEmail {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    .message {
       font-size: 0.85rem;
       color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      justify-content: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; // Truncates long titles
+      display: block;
+      margin-top: 0.4rem;
+      font-style: italic;
+      word-wrap: break-word;
     }
   }
 
-  // 🛠 Fix Button Overflow
   .actionButtons {
     display: flex;
     justify-content: center;
@@ -74,20 +124,26 @@
 
     button {
       border: none;
-      padding: 0.4rem 0.6rem; // Reduce padding
+      padding: 0.4rem 0.6rem;
       border-radius: 6px;
-      font-size: 0.8rem; // Smaller font
+      font-size: 0.8rem;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.3rem;
-      min-width: 80px; // Prevents shrinkage
-      max-width: 100px; // Ensures fit inside panel
+      min-width: 80px;
+      max-width: 100px;
 
       svg {
         font-size: 0.9rem;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
     }
 
@@ -95,7 +151,7 @@
       background: #27ae60;
       color: #ffffff;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background: #2ecc71;
       }
     }
@@ -104,14 +160,14 @@
       background: #c0392b;
       color: #ffffff;
 
-      &:hover {
+      &:hover:not(:disabled) {
         background: #e74c3c;
       }
     }
   }
 }
 
-// 📱 Responsive Adjustments
+// Responsive Adjustments
 @media (max-width: 768px) {
   .contractInvitations {
     padding: 0.3rem;
